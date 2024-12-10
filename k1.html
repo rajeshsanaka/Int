@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #f6d365, #fda085);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.marquee {
+    background-color: #ffffff;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.styled-form {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 350px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.styled-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.styled-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+}
+
+.styled-form input[type="text"],
+.styled-form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.styled-form input[type="text"]:focus,
+.styled-form input[type="date"]:focus {
+    box-shadow: 0 0 8px rgba(66, 133, 244, 0.6);
+    border-color: #4285f4;
+}
+
+.styled-form input[type="submit"] {
+    background: linear-gradient(120deg, #34a853, #b8e994);
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+    width: 100%;
+}
+
+.styled-form input[type="submit"]:hover {
+    transform: scale(1.05);
+    background: linear-gradient(120deg, #31a24e, #91d486);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <marquee behavior="scroll" direction="left" class="marquee">Welcome to the Interest Calculator Form!</marquee>
+
+    <form class="styled-form">
+        <h2>Loan Interest Calculator</h2>
+
+    <label>amount</label>
+    <input type="text" id="k1">
+    <label>takendate</label>
+    <input type="date" id="k2">
+    <label>return-date</label>
+    <input type="date" id="k3">
+    <label>percentage of intereset</label>
+    <input type="text" id="k4">
+    <input type="submit" id="k5">
+    <input type="text" id="k6" style="margin-top:10px ;" readonly>
+    <input type="text" id="k7" readonly>
+    </form>
+    <script>
+        function sample(){
+            event.preventDefault();
+
+
+        var amount=Number(document.getElementById("k1").value);
+        var date1=new Date(document.getElementById("k2").value);
+        var date2=new Date(document.getElementById("k3").value);
+        var sub=Math.abs(date1-date2);
+        var days = (sub / (1000 * 60 * 60 * 24)); // Incorrect
+        console.log("days"+days);
+        var intereset=Number(document.getElementById("k4").value);
+        var final=(amount*days*intereset)/3000;
+        console.log(final);
+        document.getElementById("k6").value=final.toFixed(5);
+
+        //rajesh
+        var  days1=days;
+let months=Math.round(days1/30);
+let day=days1%30;
+let time =months.toString()+" Months"+day.toString()+" Days";
+document.getElementById("k7").value=time;
+
+        }
+
+        document.getElementById("k5").addEventListener("click",sample);
+    </script>    
+</body>
+</html>
