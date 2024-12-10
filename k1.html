@@ -126,7 +126,7 @@
         var days = (sub / (1000 * 60 * 60 * 24)); // Incorrect
         console.log("days"+days);
         var intereset=Number(document.getElementById("k4").value);
-        var final=(amount*days*intereset)/3000;
+        var final=Math.round((amount*days*intereset)/3000);
         console.log(final);
         document.getElementById("k6").value=final.toFixed(5);
 
